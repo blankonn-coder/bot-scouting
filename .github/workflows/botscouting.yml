@@ -2,9 +2,9 @@ name: Bot Scouting Crypto
 
 on:
   schedule:
-    # Berjalan otomatis setiap 4 jam sekali berdasarkan UTC (00:00, 04:00, 08:00, 12:00, 16:00, 20:00)
+    # Berjalan otomatis setiap 4 jam sekali UTC (00:00, 04:00, 08:00, 12:00, 16:00, 20:00)
     - cron: '0 0,4,8,12,16,20 * * *'
-  workflow_dispatch: # Memungkinkan bot dijalankan manual kapan saja via tombol di GitHub
+  workflow_dispatch:
 
 jobs:
   run-scoutbot:
@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas schedule
+          pip install -r requirements.txt
 
       - name: Run Scoutbot Script
         run: python botscout.py
